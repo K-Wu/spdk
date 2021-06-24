@@ -141,8 +141,8 @@ spdk_log(enum spdk_log_level level, const char *file, const int line, const char
 	case SPDK_LOG_DEBUG:
 		severity = LOG_INFO;
 		break;
-	case SPDK_LOG_DISABLED:
-		return;
+	//case SPDK_LOG_DISABLED:
+	//	return;
 	}
 
 	va_start(ap, format);
