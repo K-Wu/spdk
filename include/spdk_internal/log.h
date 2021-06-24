@@ -69,28 +69,19 @@ __attribute__((constructor)) static void register_flag_##flag(void) \
 
 #define SPDK_INFOLOG(FLAG, ...)									\
 	do {											\
-		extern struct spdk_log_flag FLAG;						\
-		if (FLAG.enabled) {								\
 			spdk_log(SPDK_LOG_INFO, __FILE__, __LINE__, __func__, __VA_ARGS__);	\
-		}										\
 	} while (0)
 
 #ifdef DEBUG
 
 #define SPDK_DEBUGLOG(FLAG, ...)								\
 	do {											\
-		extern struct spdk_log_flag FLAG;						\
-		if (FLAG.enabled) {								\
 			spdk_log(SPDK_LOG_DEBUG, __FILE__, __LINE__, __func__, __VA_ARGS__);	\
-		}										\
 	} while (0)
 
 #define SPDK_LOGDUMP(FLAG, LABEL, BUF, LEN)						\
 	do {										\
-		extern struct spdk_log_flag FLAG;					\
-		if ((FLAG.enabled) && (LEN)) {						\
 			spdk_log_dump(stderr, (LABEL), (BUF), (LEN));			\
-		}									\
 	} while (0)
 
 #else
