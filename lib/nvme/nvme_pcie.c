@@ -2274,6 +2274,7 @@ nvme_pcie_qpair_process_completions(struct spdk_nvme_qpair *qpair, uint32_t max_
 		pqpair->sq_head = cpl->sqhd;
 
 		if (tr->req) {
+			spdk_nvme_qpair_print_completion(qpair, cpl);
 			nvme_pcie_qpair_complete_tracker(qpair, tr, cpl, true);
 		} else {
 			SPDK_ERRLOG("cpl does not map to outstanding cmd\n");
